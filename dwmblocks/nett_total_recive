@@ -1,0 +1,5 @@
+#!/bin/sh
+veri=$(cat /sys/class/net/wlp3s0/statistics/rx_bytes)
+veri_mb=$(awk "BEGIN {if ($veri < 1024 * 1024) printf \"%.2f KB\", $veri / 1024; else if ($veri < 1024 * 1024 * 1024) printf \"%.2f MB\", $veri / (1024 * 1024); else printf \"%.2f GB\", $veri / (1024 * 1024 * 1024)}")
+echo "$veri_mb"
+
